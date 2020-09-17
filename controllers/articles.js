@@ -1,5 +1,3 @@
-const jwt = require('jsonwebtoken');
-const {secret} = require('../config');
 const Article = require('../models/articles');
 
 class ArticlesCtl{

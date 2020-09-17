@@ -3,7 +3,7 @@ var app = new Koa();
 
 const path = require('path');
 
-// 上传图片
+// koa-body
 const koaBody = require('koa-body');
 app.use(koaBody({
   // 启用文件
@@ -14,7 +14,7 @@ app.use(koaBody({
   },
 }));
 
-// 生成图片链接
+// koa-static
 const koaStatic = require('koa-static');
 app.use(koaStatic(path.join(__dirname, 'public')));
 
@@ -29,7 +29,7 @@ mongoose.set('useFindAndModify', false)
 const parameter = require('koa-parameter');
 app.use(parameter(app));
 
-
+// cors
 const cors = require('@koa/cors');
 app.use(cors({
   origin: function(ctx) {
