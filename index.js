@@ -52,4 +52,4 @@ app.use(cors({
 const routing = require('./routes');
 routing(app);
 
-app.listen(3000, () => console.log("Listening on 3000. Vue-koa-blog-server"));
+app.listen(5000, () => console.log("Listening on 5000. Vue-koa-blog-server"));
