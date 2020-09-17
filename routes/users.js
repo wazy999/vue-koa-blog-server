@@ -10,7 +10,7 @@ const auth = jwt({ secret });
 
 router.get('/', auth, find);        // http://localhost:3000/users/
 router.get('/:id', findById); // http://localhost:3000/users/tom
-router.post('/', create);     // http://localhost:3000/users
+router.post('/', auth, create);     // http://localhost:3000/users
 router.patch('/:id', auth, checkOwner, update); //patch部分更新 替换 put整体更新
 router.delete('/:id', auth, checkOwner, del);
 router.post('/login', login);
