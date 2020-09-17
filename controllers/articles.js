@@ -23,5 +23,21 @@ class ArticlesCtl{
         const article = await new Article(ctx.request.body).save();
         ctx.body = article;
     }
+    async delete(ctx){
+        const article = await Article.findOneAndDelete({id: ctx.params.id});
+        // const article = await Article.findByIdAndRemove(ctx.params.id);
+        if(!article){ctx.throw(404, '文章不存在');}
+        ctx.status = 204;
+    }
+    // // 授权
+    // async checkOwner(ctx, next){
+    //     console.log("ctx.state.user._id")
+    //     console.log(ctx.state)
+    //     console.log(ctx.state.user._id)
+    //     if(ctx.params.id !== ctx.state.user._id){
+    //         ctx.throw(403, '没有权限');
+    //     }
+    //     await next();
+    // }
 }
 module.exports = new ArticlesCtl();    //对象
