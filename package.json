@@ -1,0 +1,28 @@
+{
+  "name": "vue-koa-blog-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "axios": "^0.20.0",
+    "ejs": "^3.1.5",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-jwt": "^4.0.0",
+    "koa-parameter": "^3.0.1",
+    "koa-router": "^9.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.3.0",
+    "koa2-cors": "^2.0.6",
+    "mongoose": "^5.10.4",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon index"
+  },
+  "author": "fanghaoji",
+  "license": "ISC"
+}
