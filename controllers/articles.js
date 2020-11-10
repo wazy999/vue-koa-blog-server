@@ -1,13 +1,23 @@
 const Article = require('../models/articles');
+var ObjectID = require("mongodb").ObjectID;
 
 class ArticlesCtl{
-    async find(ctx){
+    async findAll(ctx){
         ctx.body = await Article.find();
     }
+    async find(ctx){
+        const {pageNo, pageSize} = ctx.request.body;
+        ctx.body = await Article.find().limit(pageSize).skip(pageNo-1);
+    }
     async findById(ctx){
-        const article = await Article.findById(ctx.params.id);
-        if(!article) { ctx.throw(404, '文章不存在')};
-        ctx.body = article;
+        // 验证是否是 ObjectId (_id)
+        if (ObjectID.isValid(ctx.query.id)) {
+            const article = await Article.findById(ctx.query.id); // ctx.params.id?
+            ctx.body = article;
+        }
+        else {
+            ctx.throw(404, '文章不存在');
+        }
     }
     async create(ctx){
         ctx.verifyParams({
