@@ -19,8 +19,9 @@ const koaStatic = require('koa-static');
 app.use(koaStatic(path.join(__dirname, 'public')));
 
 // mongoose
+const { mongo_url } = require('./config');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/db_blog', { useNewUrlParser: true, useUnifiedTopology: true }, ()=> console.log('MongoDB连接成功！'))
+mongoose.connect(mongo_url, { useNewUrlParser: true, useUnifiedTopology: true }, ()=> console.log('MongoDB连接成功！'))
 mongoose.connection.on('error', console.error);
 mongoose.set('useFindAndModify', false)
 
