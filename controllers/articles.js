@@ -45,7 +45,7 @@ class ArticlesCtl{
           title: { type: 'string', required: true},
           id: { type: 'number', required: true},
           body_html: { type: 'string', required: true},
-          body_markdown: { type: 'string', required: true}
+          body: { type: 'string', required: true}
         })
         // 添加重复文章时报错
         const {id} = ctx.request.body;

@@ -4,7 +4,7 @@ const articleSchema = new Schema({
   title: {type: String, required: true},
   id: {type: Number, required: true},  //, select: false
   body_html: {type: String, required: true},
-  body_markdown: {type: String, required: true},
+  body: {type: String, required: true},
   book_id: {type: Number},
   comments_count: {type: Number},
   content_updated_at: {type: String},
