@@ -4,7 +4,7 @@ var ObjectID = require("mongodb").ObjectID;
 class ArticlesCtl{
     async findAll(ctx){
         // ctx.body = await Article.find();
-        let arr1 = await Article.find();
+        let arr1 = await Article.find().sort({ "first_published_at": -1 });
         ctx.body = {
             success: true,
             data: {
@@ -17,7 +17,7 @@ class ArticlesCtl{
         const {pageNo, pageSize} = ctx.request.body;
         // ctx.body = await Article.find().limit(pageSize).skip(pageNo-1);
         let arr1 = await Article.find();
-        let arr2 = await Article.find().limit(pageSize).skip(pageNo-1);
+        let arr2 = await Article.find().sort({ "first_published_at": -1 }).limit(pageSize).skip(pageNo-1);
         ctx.body = {
             success: true,
             data: {
