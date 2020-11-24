@@ -2,20 +2,24 @@ const statistical = require('../models/statistical.js');
 const { update } = require('../models/statistical.js');
 
 class flow{
-    async findFlow(ctx){
+     findFlow(ctx){
         let data
         const whereStr = {'pageType':"common"};
-        await statistical.find(whereStr,(err,res)=>{
-          if(err){
-            console.log(err)
-          }else{
-            data = res
-          }
-        }) 
-        ctx.body = {
+        return new Promise((resolve,reject)=>{
+          statistical.find(whereStr,(err,res)=>{
+            if(err){
+              reject(err)
+            }else{
+              resolve(res)
+            }
+          })
+        }).then(res =>{
+          ctx.body = {
             success: true,
-            data:data
-        };
+            data:res
+          };
+        })
+
     }
     async getFlow(ctx){
         const whereStr = {'pageType':"common"};
@@ -49,7 +53,6 @@ class flow{
             })
         }
         update = {'PV':++data[0].PV}
-        console.log(update)
         await statistical.updateMany(whereStr,update,(err,res)=>{
           if(err){
             console.log(err)
